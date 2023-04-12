@@ -19,3 +19,4 @@ class NekretnineScraperItem(scrapy.Item):
     municipality = scrapy.Field()
     suburb = scrapy.Field()
     street = scrapy.Field()
+    url_link = scrapy.Field()

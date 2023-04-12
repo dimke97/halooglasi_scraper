@@ -62,9 +62,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "nekretnine_scraper.pipelines.NekretnineScraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "nekretnine_scraper.pipelines.PriceConvertPipeline": 100,
+   "nekretnine_scraper.pipelines.SqrMConvertPipeline": 101,
+   "nekretnine_scraper.pipelines.RoomNumConvertPipeline": 102,
+   "nekretnine_scraper.pipelines.PublishDateConvertPipeline": 105,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

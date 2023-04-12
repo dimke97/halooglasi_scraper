@@ -11,6 +11,7 @@ from datetime import datetime
 
 
 class PriceConvertPipeline:
+    """Konvertuje cenu u float"""
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         if adapter.get('price'):
@@ -21,6 +22,7 @@ class PriceConvertPipeline:
         
         
 class SqrMConvertPipeline:
+    """Konvertuje kvadraturu u float"""
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         if adapter.get('sqr_m'):
@@ -31,6 +33,7 @@ class SqrMConvertPipeline:
         
         
 class RoomNumConvertPipeline:
+    """Konvertuje broj soba u float"""
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         if adapter.get('room_num'):
@@ -41,6 +44,7 @@ class RoomNumConvertPipeline:
 
 
 class PublishDateConvertPipeline:
+    """Konvertuje datum objave u adekvatan format"""
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         if adapter.get('publish_date'):

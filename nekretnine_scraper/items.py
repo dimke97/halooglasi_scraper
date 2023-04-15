@@ -7,6 +7,7 @@ import scrapy
 
 
 class NekretnineScraperItem(scrapy.Item):
+    # Dodati izvor podataka
     title = scrapy.Field()
     price = scrapy.Field()
     sqr_m = scrapy.Field()

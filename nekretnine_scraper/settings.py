@@ -90,7 +90,13 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
+
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"

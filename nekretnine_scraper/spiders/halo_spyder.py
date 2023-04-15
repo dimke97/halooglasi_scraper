@@ -6,27 +6,9 @@ from .. itemloaders import HalloAddLoader
 class HaloSpyderSpider(scrapy.Spider):
     name = "halo_spyder"
     page_number = 2
-    # start_urls = [
-    #     "https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd"]
+    start_urls = [
+        "https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd"]
     
-    def start_requests(self):
-        url = "https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd"
-        yield scrapy.Request(url, meta={'playwright': True})
-
-
-    def start_requests(self):
-        url = "https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd"
-        yield scrapy.Request(url=url,
-                             meta=dict(
-                                 playwright=True,
-                                 playwright_include_page=True,
-                                 playwright_page_coroutines=[
-                                     # This where we can implement scrolling if we want
-                                     PageMethod(
-                                         'wait_for_selector', 'div#itemName')
-                                 ]
-                             )
-                             )
         
     async def parse(self, response):
         for apartment in response.css('.my-product-placeholder'):
@@ -47,8 +29,8 @@ class HaloSpyderSpider(scrapy.Spider):
             
             yield halo_loader.load_item()
 
-            # next_page = f'https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd?page={str(HaloSpyderSpider.page_number)}'
+            next_page = f'https://www.halooglasi.com/nekretnine/izdavanje-stanova/beograd?page={str(HaloSpyderSpider.page_number)}'
             
-            # if HaloSpyderSpider.page_number <= 2:
-            #     HaloSpyderSpider.page_number += 1
-            #     yield response.follow(next_page, callback=self.parse) 
+            if HaloSpyderSpider.page_number <= 2:
+                HaloSpyderSpider.page_number += 1
+                yield response.follow(next_page, callback=self.parse) 

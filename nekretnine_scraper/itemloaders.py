@@ -12,4 +12,4 @@ class HalloAddLoader(ItemLoader):
     municipality_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
     suburb_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
     street_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
-    url_link_in = MapCompose(lambda x: 'https://www.halooglasi.com' + x)     
+    url_link_in = MapCompose(lambda x: 'https://www.halooglasi.com' + x)

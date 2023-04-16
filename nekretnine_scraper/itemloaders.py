@@ -4,7 +4,7 @@ from scrapy.loader import ItemLoader
 class HalloAddLoader(ItemLoader):
     default_output_processor = TakeFirst()
     price_in = MapCompose(lambda x: x.replace(u'\xa0', u'').replace('€', '').replace('.', ''))
-    sqr_m_in = MapCompose(lambda x: x.replace(u'\xa0', u'').replace('m', ''))
+    sqr_m_in = MapCompose(lambda x: x.replace(u'\xa0', u'').replace('m', '').replace(',', '.'))
     room_num_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
     floor_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
     ad_owner_in = MapCompose(lambda x: x.replace(u'\xa0', u''))
